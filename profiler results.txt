@@ -1,0 +1,72 @@
+--1000x1000 grid, 3600 iterations.
+
+
+redundantWork method
+??.??s : blocksize 32, steps ?
+
+13.62s : blocksize 26, steps 1
+12.01s : blocksize 26, steps 2
+13.38s : blocksize 26, steps 3
+14.26s : blocksize 26, steps 4
+
+13.50s : blocksize 24, steps 1
+12.18s : blocksize 24, steps 2
+14.13s : blocksize 24, steps 3
+15.12s : blocksize 24, steps 4
+
+15.93s : blocksize 20, steps 1
+14.76s : blocksize 20, steps 2
+16.57s : blocksize 20, steps 3
+20.47s : blocksize 20, steps 4
+
+12.52s : blocksize 16, steps 1
+13.12s : blocksize 16, steps 2
+16.09s : blocksize 16, steps 3
+23.16s : blocksize 16, steps 4
+
+
+naive method
+11.69s : blocksize 32
+13.61s : blocksize 28
+12.12s : blocksize 24
+14.07s : blocksize 20
+11.81s : blocksize 16
+14.04s : blocksize 12
+12.67s : blocksize 8
+35.50s : blocksize 4
+
+naive method - non square blocks
+10.62s : 32x16
+ 9.97s : 32x8
+ 9.44s : 32x5
+ 9.15s : 32x4
+ 9.23s : 32x3
+10.44s : 32x2
+
+shared memory method
+XX:XXs : blocksize 32
+XX:XXs : blocksize 28
+13.05s : blocksize 24
+15.81s : blocksize 20
+11.81s : blocksize 16
+13.28s : blocksize 12
+11.98s : blocksize 8
+31.82s : blocksize 4
+
+shared memory method, non square blocks
+11.99s : 32x16 block
+14.03s : 16x32 block
+12.07s : 16x8 block
+
+
+GOLD C++ (optimized)
+1142.86s --> 19 minutes
+
+GOLD MATLAB (unoptimized, compiled)
+2910s --> 48.5 minutes
+
+GOLD MATLAB (unoptimized, interpreted)
+26865.67s --> 7.5 hours
+
+
+125 fold performance improvement
